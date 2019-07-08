@@ -1,0 +1,58 @@
+﻿@model MovieAdminViewModel;
+
+@{
+    ViewData["Title"] = "Add movie description";
+}
+
+<h4><b>Step 1:</b> Movie information</h4>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Year"></label>
+    <input asp-for="Year" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+    <span asp-validation-for="Year" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Rating"></label>
+    <input asp-for="Rating" class="form-control" />
+    <span asp-validation-for="Rating" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="VideoPath"></label>
+
+    @if (Model.VideoPath != null)
+    {
+        <br />
+        <label>@Model.VideoPath - Change video path:</label>
+        <input asp-for="VideoPathEdit" type="file" class="form-control" />
+        <span asp-validation-for="VideoPathEdit" class="text-danger"></span>
+        <input type="hidden" asp-for="@Model.VideoPath" value="@Model.VideoPath" class="form-control" />
+    }
+    else
+    {
+        <input asp-for="VideoPath" type="file" class="form-control" />
+        <span asp-validation-for="VideoPath" class="text-danger"></span>
+        <input type="hidden" asp-for="@Model.VideoPath" value="@Model.VideoPath" class="form-control" />
+    }
+
+</div>
+<div class="form-group">
+    <label asp-for="PosterPath"></label>
+    <input asp-for="PosterPath" type="url" class="form-control" />
+    <span asp-validation-for="PosterPath" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="TrailerPath"></label>
+    <input asp-for="TrailerPath" type="url" class="form-control" />
+    <span asp-validation-for="TrailerPath" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Summary"></label>
+    <textarea asp-for="Summary" rows="10" class="form-control"></textarea>
+    <span asp-validation-for="Summary" class="text-danger"></span>
+</div>

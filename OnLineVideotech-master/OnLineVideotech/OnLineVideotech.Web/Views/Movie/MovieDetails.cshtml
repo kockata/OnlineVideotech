@@ -1,0 +1,90 @@
+﻿@model MovieServiceModel
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<div class="container">
+    <h1>@Model.Name (@Model.Year.Year)</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="@Model.PosterPath" class="img-fluid" alt="Responsive image">
+            <br /><br />
+        </div>
+        <div class="col-sm-6">
+            <h3>
+                <img src="~/imdb-icon-256-322875901.png" class="imdb-icon" />
+                <label>Rating: @Model.Rating</label>
+            </h3>
+            <div class="video-container">
+                <iframe src="@Model.TrailerPath" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <br />
+            <h4 class="header-section-details">Genres</h4>
+            @foreach (var genre in Model.Genres)
+            {
+                <label class="col-form-label">@genre.Genre.Name |</label>
+            }
+            <br /> <br />
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h4 class="header-section-details">Payment info</h4>
+
+                <label>Actual price: @Model.Price BGN</label>
+                <br />
+                @if (Model.IsPurchased)
+                {
+                    <label>Purchased:</label>
+                    <br />
+                    <label>- Purchased at a price: @Model.History.Price</label>
+                    <br />
+                    <label>- Date of purchase: @Model.History.Date</label>
+                }
+            }
+            <br /> <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="text-sm-center header-section-details">Summary</h4>
+            <div class="form-group">
+                <textarea class="form-control rounded-0" style="background-color: #1C1D21; color: white; border-color: #1C1D21" rows="@Model.NumLinesSummary.ToString()"> @Model.Summary</textarea>
+            </div>
+        </div>
+    </div>
+    <br />
+    @if (User.Identity.IsAuthenticated && Model.IsPurchased)
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-sm-center header-section-details">Watch movie</h4>
+                <video controls>
+                    <source src="@Model.VideoPath" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <br />
+    }
+
+    <div class="row">
+        @if (User.Identity.IsAuthenticated && !Model.IsPurchased)
+        {
+            <div class="col-sm-6">
+                <a class="btn btn-warning btn-lg btn-block" asp-controller="Movie" asp-action="BuyMovie" asp-route-id="@Model.Id">Buy - @Model.Price BGN</a>
+            </div>
+        }
+        @if (User.IsInRole(GlobalConstants.AdministratorRole))
+        {
+            <div class="col-sm-6">
+                <a class="btn btn-danger btn-lg btn-block" asp-area="Admin" asp-controller="MovieManagement" asp-action="EditMovie" asp-route-id="@Model.Id">Edit</a>
+            </div>
+        }
+    </div>
+    <br /> <br />
+    @await Html.PartialAsync("Comments", Model)
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

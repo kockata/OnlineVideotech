@@ -1,0 +1,71 @@
+﻿@model UserBalanceServiceModel
+
+@{
+    ViewData["Title"] = "Balance";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Your balance: @Model.Balance BGN</h3>
+            <h3>Add money to your account</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" alt="Responsive image" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Card number</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-control" placeholder="Valid Card Number" />
+                            <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><span class="hidden-xs">Expiration date</span><span class="visible-xs-inline"></span></label>
+                        <input type="tel" class="form-control" placeholder="MM / YY" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>CV code</label>
+                        <input type="tel" class="form-control" placeholder="CVC" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Card owner</label>
+                        <input type="text" class="form-control" placeholder="Card Owner Names" />
+                    </div>
+                </div>
+            </div>
+            <form asp-controller="MovieController" asp-action="Balance" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Enter the amount</label>
+                            <input asp-for="@Model.Balance" value="0" class="form-control" />
+                            <span asp-validation-for="@Model.Balance" class="text-danger"></span>
+                            <input type="hidden" asp-for="@Model.Id" value="@Model.Id" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-warning btn-lg btn-block">Process payment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

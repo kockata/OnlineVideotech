@@ -1,0 +1,63 @@
+﻿@model BuyMovieViewModel
+
+@{
+    ViewData["Title"] = "Pay with a card";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Buy with a credit card:</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" alt="Responsive image" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5>Movie: "@Model.MovieName"</h5>
+                        <h5>Price: -@Model.Price BGN</h5>
+                        <br />
+                        <label>Card number</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-control" placeholder="Valid Card Number" />
+                            <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><span class="hidden-xs">Expiration date</span><span class="visible-xs-inline"></span></label>
+                        <input type="tel" class="form-control" placeholder="MM / YY" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>CV code</label>
+                        <input type="tel" class="form-control" placeholder="CVC" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Card owner</label>
+                        <input type="text" class="form-control" placeholder="Card Owner Names" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-warning btn-lg btn-block">Process payment</button>
+                </div>
+            </div>
+            <br />
+            <h3>Or</h3>
+            <br />
+        </div>
+    </div>
+</div>

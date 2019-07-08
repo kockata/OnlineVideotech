@@ -1,0 +1,45 @@
+﻿@model MovieAdminViewModel;
+
+<hr />
+<h4><b>Step 3:</b> Movie price for different types of user</h4>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Role
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Prices.Count; i++)
+        {
+            <tr>
+                <th>
+                    @Model.Prices[i].Role.Name
+                </th>
+                <th>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="hidden" name="RoleId" value="@Model.Prices[i].Role.Id" />
+                                <input asp-for="@Model.Prices[i].Price" class="form-control" />
+                                <span asp-validation-for="@Model.Prices[i].Price" class="text-danger"></span>
+
+                                <input type="hidden" asp-for="@Model.Prices[i].Id" value="@Model.Prices[i].Id" class="form-control" />
+                                <input type="hidden" asp-for="@Model.Prices[i].RoleId" value="@Model.Prices[i].RoleId" class="form-control" />
+                                <input type="hidden" asp-for="@Model.Prices[i].Role.Name" value="@Model.Prices[i].Role.Name" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <b>BGN</b>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

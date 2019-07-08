@@ -1,0 +1,34 @@
+﻿@model BuyMovieViewModel
+
+@{
+    ViewData["Title"] = "Pay from your account balance";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-controller="MovieController" asp-action="BuyMovie" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Pay from your account balance: @Model.Balance BGN</h3>
+                        <div class="form-group">
+                            <br />
+                            <h5>Movie: "@Model.MovieName"</h5>
+                            <h5>Price: -@Model.Price BGN</h5>
+                            <input type="hidden" asp-for="@Model.MovieId" value="@Model.MovieId" class="form-control" />
+                            <input type="hidden" asp-for="@Model.Price" value="@Model.Price" class="form-control" />
+                            <input type="hidden" asp-for="@Model.MovieName" value="@Model.MovieName" class="form-control" />
+                            <input type="hidden" asp-for="@Model.Balance" value="@Model.Balance" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-warning btn-lg btn-block">Process payment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

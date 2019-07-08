@@ -1,0 +1,22 @@
+﻿@model BuyMovieViewModel
+
+@{
+    ViewData["Title"] = "Balance";
+}
+
+<div class="container">
+    <div class="row">        
+        <div class="col-md-12">
+            <h3>Choose payment method: </h3>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-warning btn-lg btn-block" asp-area="" asp-controller="Movie" asp-action="PayWithCard" asp-route-id="@Model.MovieId">Pay with a card</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-warning btn-lg btn-block" asp-area="" asp-controller="Movie" asp-action="PayFromBalance" asp-route-id="@Model.MovieId">Pay from your account balance</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

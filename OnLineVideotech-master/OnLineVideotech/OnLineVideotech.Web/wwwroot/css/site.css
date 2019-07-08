@@ -1,0 +1,157 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 16px;
+}
+
+/*@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}*/
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #1C1D21;
+    color: white;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+.thumbnail-main {
+    display: inline-block;
+    padding: 20px;
+    list-style-type: none;
+    text-align: center;
+}
+
+    .thumbnail-main a > img,
+    .thumbnail-main > img {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+.movie-poster {
+    border-radius: 7px;
+}
+
+    .movie-poster:hover {
+        box-shadow: 0px 0px 20px 20px rgba(68, 102, 172, 0.35);
+    }
+
+        .movie-poster:hover + .movied {
+            display: inline-block;
+        }
+
+.imdb-icon {
+    width: 70px;
+    height: 70px;
+}
+
+.cc-img {
+    margin: 0 auto;
+}
+
+.nav-item:hover {
+    background-color: lightgrey;
+    border-radius: 7px;
+}
+
+.comment-wrapper .panel-body {
+    max-height: 650px;
+    overflow: auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom: 1px dashed #efefef;
+    margin-bottom: 25px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+.break-text p {
+    word-wrap: break-word;
+}
+
+.header-section-details {
+    color: green;
+    font-weight: bold;
+}
+
+    .header-section-details:hover {
+        color: greenyellow;
+    }
+
+.summary-area {
+    background-color: yellow;
+    color: white;
+}

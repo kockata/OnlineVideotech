@@ -1,0 +1,43 @@
+﻿@model MovieServiceModel
+
+<h4 class="header-section-details">Comments</h4>
+<div class="row">
+    <div class="col-sm-6">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="Movie" asp-action="CreateComment" method="post">
+
+                <input type="hidden" asp-for="@Model.Id" value="@Model.Id" class="form-control" />
+
+                <div class="form-group">
+                    <textarea asp-for="@Model.Comment" rows="6" class="form-control"></textarea>
+                    <span asp-validation-for="@Model.Comment" class="text-danger"></span>
+                </div>
+
+                <button class="btn btn-success btn-lg btn-block">Post</button>
+            </form>
+
+        }
+    </div>
+</div>
+@foreach (var comment in @Model.Comments)
+{
+    <br />
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="media-body">
+                <strong class="text-success">@comment.UserName</strong>
+                <span class="text-muted pull-right">
+                    <small class="text-muted">@comment.Date</small>
+                </span>
+                @if (User.IsInRole(GlobalConstants.AdministratorRole) || User.Identity.Name == comment.UserName)
+                {
+                    <a asp-controller="Movie" asp-action="DeleteComment" asp-route-id="@comment.Id" class="header-section-details btn-link">Delete</a>
+                }
+            </div>
+            <div class="container break-text">
+                <p class="text-justify">@comment.Comment</p>
+            </div>            
+        </div>       
+    </div>
+}
